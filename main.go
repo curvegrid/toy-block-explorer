@@ -115,18 +115,47 @@ func GetTransactionsForBlock(blockchainInfo *BlockchainInfo) {
 // GetTokenDetails returns some basic information about an ERC20 token
 func GetTokenDetails(blockchainInfo *BlockchainInfo) {
 	// bind the token
+	token, err := NewERC20Interface(blockchainInfo.TokenAddress, Client)
+	if err != nil {
+		log.Printf("Error binding token %v: %v", blockchainInfo.TokenAddress.Hex(), err)
+		return
+	}
 
 	tokenInfo := &TokenInfo{
 		Address: blockchainInfo.TokenAddress.Hex(),
 	}
 
 	// retrieve token name
+	tokenName, err := token.Name(nil)
+	if err != nil {
+		log.Printf("Error retrieving token name %v: %v", blockchainInfo.TokenAddress.Hex(), err)
+		return
+	}
+	tokenInfo.Name = tokenName
 
 	// retrieve token symbol
+	tokenSymbol, err := token.Symbol(nil)
+	if err != nil {
+		log.Printf("Error retrieving token symbol %v: %v", blockchainInfo.TokenAddress.Hex(), err)
+		return
+	}
+	tokenInfo.Symbol = tokenSymbol
 
 	// retrieve token decimals
+	tokenDecimals, err := token.Decimals(nil)
+	if err != nil {
+		log.Printf("Error retrieving token decimals %v: %v", blockchainInfo.TokenAddress.Hex(), err)
+		return
+	}
+	tokenInfo.Decimals = tokenDecimals
 
 	// retrieve token total supply
+	tokenTotalSupply, err := token.TotalSupply(nil)
+	if err != nil {
+		log.Printf("Error retrieving token total supply %v: %v", blockchainInfo.TokenAddress.Hex(), err)
+		return
+	}
+	tokenInfo.TotalSupply = tokenTotalSupply
 
 	blockchainInfo.Token = tokenInfo
 }
