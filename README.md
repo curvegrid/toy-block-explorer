@@ -14,9 +14,9 @@ You will need to install the following to build and work with this project:
 
 ```sh
 $ git clone https://github.com/curvegrid/easy-geth-dev-mode.git
+$ cd toy-block-explorer
 $ git submodule init
 $ git submodule update --recursive
-$ cd toy-block-explorer
 ```
 
 Optional components and setup steps include:
