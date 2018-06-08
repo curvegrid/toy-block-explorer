@@ -69,6 +69,21 @@ func GetBlockchainInfo() *BlockchainInfo {
 	return blockchainInfo
 }
 
+// GetTransactionsForBlock adds the transactions for ThisBlockNum into the BlockchainInfo struct
+func GetTransactionsForBlock(blockchainInfo *BlockchainInfo) {
+	// retrieve the block, which includes all of the transactions
+
+	// for _, transaction := range []*types.Transaction(block.Transactions()) {
+		// retrieve transaction receipt
+
+
+		transactionInfo := TransactionInfo{
+		}
+
+		blockchainInfo.Transactions = append(blockchainInfo.Transactions, transactionInfo)
+	//}
+}
+
 // ShortHex returns a shortened version of a hex string
 func ShortHex(long string) string {
 	if len(long) < 19 {
@@ -171,6 +186,7 @@ type BlockchainInfo struct {
 	LastBlockNum *big.Int
 	ThisBlockNum *big.Int
 	Blocks       []BlockInfo
+	Transactions []TransactionInfo
 }
 
 type BlockInfo struct {
@@ -179,6 +195,15 @@ type BlockInfo struct {
 	Hash             string
 	TransactionCount int
 	Miner            string
+}
+
+type TransactionInfo struct {
+	Hash            string
+	To              string
+	Value           *big.Int
+	Data            string
+	ContractAddress string
+	Fee             *big.Int
 }
 
 // OptionsStruct contains global program options
