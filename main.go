@@ -5,6 +5,7 @@ import (
 	"encoding/hex"
 	"flag"
 	"fmt"
+	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/core/types"
 	"github.com/ethereum/go-ethereum/ethclient"
 	"github.com/ethereum/go-ethereum/rpc"
@@ -19,7 +20,11 @@ import (
 
 // GetBlockchainInfo retrieve top-level information about the blockchain
 func GetBlockchainInfo() *BlockchainInfo {
-	blockchainInfo := &BlockchainInfo{}
+	blockchainInfo := &BlockchainInfo{
+		Token: &TokenInfo{
+			TotalSupply: big.NewInt(0),
+		},
+	}
 
 	// RPC call to retrieve the latest block
 	var lastBlockStr string
@@ -105,6 +110,25 @@ func GetTransactionsForBlock(blockchainInfo *BlockchainInfo) {
 
 		blockchainInfo.Transactions = append(blockchainInfo.Transactions, transactionInfo)
 	}
+}
+
+// GetTokenDetails returns some basic information about an ERC20 token
+func GetTokenDetails(blockchainInfo *BlockchainInfo) {
+	// bind the token
+
+	tokenInfo := &TokenInfo{
+		Address: blockchainInfo.TokenAddress.Hex(),
+	}
+
+	// retrieve token name
+
+	// retrieve token symbol
+
+	// retrieve token decimals
+
+	// retrieve token total supply
+
+	blockchainInfo.Token = tokenInfo
 }
 
 // ShortHex returns a shortened version of a hex string
@@ -217,6 +241,8 @@ type BlockchainInfo struct {
 	ThisBlockNum *big.Int
 	Blocks       []BlockInfo
 	Transactions []TransactionInfo
+	TokenAddress common.Address
+	Token        *TokenInfo
 }
 
 type BlockInfo struct {
@@ -234,6 +260,14 @@ type TransactionInfo struct {
 	Data            string
 	ContractAddress string
 	Fee             *big.Int
+}
+
+type TokenInfo struct {
+	Address     string
+	Name        string
+	Symbol      string
+	Decimals    uint8
+	TotalSupply *big.Int
 }
 
 // OptionsStruct contains global program options

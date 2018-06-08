@@ -1,0 +1,65 @@
+{{ template "header.tmpl" . }}
+
+<div class="container-fluid">
+    <div class="row">
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
+                <h1 class="h2">ERC20 Token Inspector</h1>
+            </div>
+
+            <div class="col-md-12 order-md-1">
+              <form class="needs-validation" novalidate action="/erc20token.html">
+                <div class="row">
+                  <div class="col-md-8 mb-3">
+                    <label for="tokenAddress">Token address</label>
+                    <div class="input-group">
+                      <input type="text" id="tokenAddress" name="tokenAddress" class="form-control" placeholder="0x..." value="{{ .Token.Address }}">
+                      <div class="input-group-append">
+                        <button type="submit" class="btn btn-secondary">Inspect</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+
+            <div class="col-md-8 order-md-1" id="tokenDetails">
+              <h4 class="mb-3">Token Details</h4>
+              <form class="needs-validation" novalidate>
+    
+                <div class="mb-3">
+                  <label for="username">Name</label>
+                  <div class="input-group">
+                    <input type="text" class="form-control" id="tokenName" placeholder="" value="{{ .Token.Name }}" disabled>
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <label for="username">Symbol</label>
+                  <div class="input-group">
+                    <input type="text" class="form-control" id="tokenSymbol" placeholder="" value="{{ .Token.Symbol }}" disabled>
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <label for="username">Decimals</label>
+                  <div class="input-group">
+                    <input type="text" class="form-control" id="tokenDecimals" placeholder="" value="{{ .Token.Decimals }}" disabled>
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <label for="username">Total Supply</label>
+                  <div class="input-group">
+                    <input type="text" class="form-control" id="tokenTotalSupply" placeholder="" value="{{ .Token.TotalSupply }}" disabled>
+                  </div>
+                </div>
+              </form>
+            </div>
+          
+            
+          </main>
+        </div>
+      </div>
+
+{{ template "footer.tmpl" . }}
