@@ -169,6 +169,12 @@ func HandleTemplates(next http.Handler) http.Handler {
 				GetTransactionsForBlock(blockchainInfo)
 			}
 
+			// retrieve optional query parameter: tokenAddress
+			if r.Form.Get("tokenAddress") != "" {
+				blockchainInfo.TokenAddress = common.HexToAddress(r.Form.Get("tokenAddress"))
+				GetTokenDetails(blockchainInfo)
+			}
+
 			// requested filename on disk
 			diskFilename := filepath.Base(r.URL.Path)
 			if r.URL.Path == "/" {
