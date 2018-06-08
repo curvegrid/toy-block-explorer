@@ -115,6 +115,13 @@ func HandleTemplates(next http.Handler) http.Handler {
 				log.Println("Error parsing form parameters")
 			}
 
+			// retrieve optional query parameter: blocknum
+			var ok bool
+			blockchainInfo.ThisBlockNum, ok = big.NewInt(0).SetString(r.Form.Get("blocknum"), 10)
+			if ok {
+				GetTransactionsForBlock(blockchainInfo)
+			}
+
 			// requested filename on disk
 			diskFilename := filepath.Base(r.URL.Path)
 			if r.URL.Path == "/" {
