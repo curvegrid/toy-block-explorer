@@ -1,4 +1,4 @@
 
 [submodule "geth/easy-geth-dev-mode"]
 	path = geth/easy-geth-dev-mode
-	url = git@github.com:curvegrid/easy-geth-dev-mode.git
+	url = https://github.com/curvegrid/easy-geth-dev-mode.git
