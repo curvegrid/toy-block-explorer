@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"flag"
 	"fmt"
 	"github.com/ethereum/go-ethereum/ethclient"
@@ -19,18 +20,50 @@ func GetBlockchainInfo() *BlockchainInfo {
 	blockchainInfo := &BlockchainInfo{}
 
 	// RPC call to retrieve the latest block
+	var lastBlockStr string
+	err := RPCClient.Call(&lastBlockStr, "eth_blockNumber")
+	if err != nil {
+		log.Printf("Can't get latest block: %v", err)
+		return nil
+	}
 
 	// translate from string (hex probably) to *big.Int
+	blockchainInfo.LastBlockNum = big.NewInt(0)
+	if _, ok := blockchainInfo.LastBlockNum.SetString(lastBlockStr, 0); !ok {
+		log.Printf("Unable to parse last block string: %v", lastBlockStr)
+		return nil
+	}
 
 	// retrieve last 10 blocks, ensuring not to attempt to access an invalid block
 	maxBlock := 10
+	if int(blockchainInfo.LastBlockNum.Int64()) < maxBlock {
+		maxBlock = int(blockchainInfo.LastBlockNum.Int64())
+	}
 
 	for i := 0; i < maxBlock; i++ {
+		blockNum := big.NewInt(0).Set(blockchainInfo.LastBlockNum).Sub(blockchainInfo.LastBlockNum, big.NewInt(int64(i)))
+
 		// retrieve the block, which includes all of the transactions
+		block, err := Client.BlockByNumber(context.TODO(), blockNum)
+		if err != nil {
+			log.Printf("Error getting block %v by number: %v", blockNum, err)
+			continue
+		}
 
 		// store the block info in a struct
+		hash := block.Hash().Hex()
+		miner := block.Coinbase().Hex()
+
+		blockInfo := BlockInfo{
+			Num:              big.NewInt(0).Set(blockNum),
+			Timestamp:        time.Unix(block.Time().Int64(), 0),
+			Hash:             hash,
+			TransactionCount: len(block.Transactions()),
+			Miner:            miner,
+		}
 
 		// append the block info to the blockchain info struct
+		blockchainInfo.Blocks = append(blockchainInfo.Blocks, blockInfo)
 	}
 
 	return blockchainInfo
@@ -184,8 +217,19 @@ func main() {
 	log.Printf("Connecting to Ethereum node at %v", Options.EthEndpoint)
 
 	// connect to RPC via the Eth client
+	var err error
+	Client, err = ethclient.Dial(Options.EthEndpoint)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer Client.Close()
 
 	// connect to RPC via the RPC client
+	RPCClient, err = rpc.Dial(Options.EthEndpoint)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer RPCClient.Close()
 
 	// start web server
 	http.Handle("/", HandleTemplates(http.FileServer(http.Dir(Options.WWWRoot))))
