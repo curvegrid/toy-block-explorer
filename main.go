@@ -1,6 +1,8 @@
 package main
 
 import (
+	"encoding/hex"
+	"github.com/ethereum/go-ethereum/core/types"
 	"context"
 	"flag"
 	"fmt"
@@ -71,17 +73,38 @@ func GetBlockchainInfo() *BlockchainInfo {
 
 // GetTransactionsForBlock adds the transactions for ThisBlockNum into the BlockchainInfo struct
 func GetTransactionsForBlock(blockchainInfo *BlockchainInfo) {
+	// sanity check
+	if blockchainInfo.ThisBlockNum == nil {
+		log.Println("No block number to retrieve transactions from")
+		return
+	}
+
 	// retrieve the block, which includes all of the transactions
+	block, err := Client.BlockByNumber(context.TODO(), blockchainInfo.ThisBlockNum)
+	if err != nil {
+		log.Printf("Error getting block %v by number: %v", blockchainInfo.ThisBlockNum, err)
+		return
+	}
 
-	// for _, transaction := range []*types.Transaction(block.Transactions()) {
+	for _, transaction := range []*types.Transaction(block.Transactions()) {
 		// retrieve transaction receipt
-
+		receipt, err := Client.TransactionReceipt(context.TODO(), transaction.Hash())
+		if err != nil {
+			log.Printf("Error getting transaction receipt: %v", err)
+			return
+		}
 
 		transactionInfo := TransactionInfo{
+			Hash:            transaction.Hash().Hex(),
+			To:              transaction.To().Hex(),
+			Value:           big.NewInt(0).Set(transaction.Value()),
+			Data:            hex.EncodeToString(transaction.Data()),
+			ContractAddress: receipt.ContractAddress.Hex(),
+			Fee:             big.NewInt(0).Mul(transaction.GasPrice(), big.NewInt(int64(receipt.GasUsed))),
 		}
 
 		blockchainInfo.Transactions = append(blockchainInfo.Transactions, transactionInfo)
-	//}
+	}
 }
 
 // ShortHex returns a shortened version of a hex string
@@ -113,6 +136,13 @@ func HandleTemplates(next http.Handler) http.Handler {
 			// parse any form and query parameters
 			if err := r.ParseForm(); err != nil {
 				log.Println("Error parsing form parameters")
+			}
+
+			// retrieve optional query parameter: blocknum
+			var ok bool
+			blockchainInfo.ThisBlockNum, ok = big.NewInt(0).SetString(r.Form.Get("blocknum"), 10)
+			if ok {
+				GetTransactionsForBlock(blockchainInfo)
 			}
 
 			// requested filename on disk
