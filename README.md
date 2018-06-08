@@ -13,7 +13,7 @@ You will need to install the following to build and work with this project:
 - This repository and its submodules, which you can install by running:
 
 ```sh
-$ git clone git@github.com:curvegrid/toy-block-explorer.git
+$ git clone https://github.com/curvegrid/easy-geth-dev-mode.git
 $ git submodule init
 $ git submodule update --recursive
 $ cd toy-block-explorer
