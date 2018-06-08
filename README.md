@@ -64,6 +64,18 @@ $ ./launch43.sh --ipcdisable --startrpc
 
 A local version of Geth is now running with a JSON RPC endpoint exposed at http://localhost:8545
 
+If you receive an error, geth may still be running. You can check this with:
+
+```
+ps -ef | grep geth
+```
+
+If you still have trouble running geth in this manner, try `./stop43.sh` and then `./launch43.sh --ipcdisable --startrpc` a few times. You can also try:
+
+```sh
+geth --dev --datadir ./chaindata --rpc console
+```
+
 You may need to manually send some transactions. For example:
 
 ```
