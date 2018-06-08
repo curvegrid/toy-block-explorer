@@ -1,0 +1,9 @@
+# system files
+.DS_Store
+
+# generated files
+#erc20.go
+
+# debugger and binary output
+debug
+toy-block-explorer

@@ -1,0 +1,75 @@
+INFO [06-08|13:31:29] Maximum peer count                       ETH=25 LES=0 total=25
+INFO [06-08|13:31:31] Using developer account                  address=0x5e4d047Cd9173fD13c220A0bf756c7E25C00F587
+INFO [06-08|13:31:31] Starting peer-to-peer node               instance=Geth/v1.8.10-stable/darwin-amd64/go1.10.2
+INFO [06-08|13:31:31] Allocated cache and file handles         database=/Users/jeff/golang/src/github.com/curvegrid/toy-block-explorer/geth/easy-geth-dev-mode/chaindata/geth/chaindata cache=768 handles=1024
+INFO [06-08|13:31:31] Writing custom genesis block 
+INFO [06-08|13:31:31] Persisted trie from memory database      nodes=12 size=2.26kB time=140.525µs gcnodes=0 gcsize=0.00B gctime=0s livenodes=1 livesize=0.00B
+INFO [06-08|13:31:31] Initialised chain configuration          config="{ChainID: 1337 Homestead: 0 DAO: <nil> DAOSupport: false EIP150: 0 EIP155: 0 EIP158: 0 Byzantium: 0 Constantinople: <nil> Engine: clique}"
+INFO [06-08|13:31:31] Initialising Ethereum protocol           versions="[63 62]" network=1
+INFO [06-08|13:31:31] Loaded most recent local header          number=0 hash=0d7b59…6e1bec td=1
+INFO [06-08|13:31:31] Loaded most recent local full block      number=0 hash=0d7b59…6e1bec td=1
+INFO [06-08|13:31:31] Loaded most recent local fast block      number=0 hash=0d7b59…6e1bec td=1
+INFO [06-08|13:31:31] Regenerated local transaction journal    transactions=0 accounts=0
+INFO [06-08|13:31:31] Starting P2P networking 
+INFO [06-08|13:31:31] started whisper v.6.0 
+INFO [06-08|13:31:31] RLPx listener up                         self="enode://d31197b64edab9a7560b3f11f0342917735ac899400591908ba51702b140144adad4f16a4857d395c76cf70dc40d48ffd3af9b8b74cc1fcc030846f33d097912@[::]:50588?discport=0"
+INFO [06-08|13:31:31] Transaction pool price threshold updated price=18000000000
+INFO [06-08|13:31:31] Etherbase automatically configured       address=0x5e4d047Cd9173fD13c220A0bf756c7E25C00F587
+INFO [06-08|13:31:31] Starting mining operation 
+INFO [06-08|13:31:31] Commit new mining work                   number=1 txs=0 uncles=0 elapsed=74.385µs
+WARN [06-08|13:31:31] Block sealing failed                     err="waiting for transactions"
+== No transactions! Mining stopped.
+INFO [06-08|13:31:31] HTTP endpoint opened                     url=http://localhost:8545 cors=http://localhost:* vhosts=localhost
+INFO [06-08|13:32:09] Maximum peer count                       ETH=25 LES=0 total=25
+INFO [06-08|13:32:09] Using developer account                  address=0x5e4d047Cd9173fD13c220A0bf756c7E25C00F587
+INFO [06-08|13:32:09] Starting peer-to-peer node               instance=Geth/v1.8.10-stable/darwin-amd64/go1.10.2
+INFO [06-08|13:32:09] Allocated cache and file handles         database=/Users/jeff/golang/src/github.com/curvegrid/toy-block-explorer/geth/easy-geth-dev-mode/chaindata/geth/chaindata cache=768 handles=1024
+INFO [06-08|13:32:09] Persisted trie from memory database      nodes=12 size=2.26kB time=19.13µs gcnodes=0 gcsize=0.00B gctime=0s livenodes=1 livesize=0.00B
+INFO [06-08|13:32:09] Initialised chain configuration          config="{ChainID: 1337 Homestead: 0 DAO: <nil> DAOSupport: false EIP150: 0 EIP155: 0 EIP158: 0 Byzantium: 0 Constantinople: <nil> Engine: clique}"
+INFO [06-08|13:32:09] Initialising Ethereum protocol           versions="[63 62]" network=1
+INFO [06-08|13:32:09] Loaded most recent local header          number=0 hash=0d7b59…6e1bec td=1
+INFO [06-08|13:32:09] Loaded most recent local full block      number=0 hash=0d7b59…6e1bec td=1
+INFO [06-08|13:32:09] Loaded most recent local fast block      number=0 hash=0d7b59…6e1bec td=1
+INFO [06-08|13:32:09] Loaded local transaction journal         transactions=0 dropped=0
+INFO [06-08|13:32:09] Regenerated local transaction journal    transactions=0 accounts=0
+INFO [06-08|13:32:09] Starting P2P networking 
+INFO [06-08|13:32:09] RLPx listener up                         self="enode://d31197b64edab9a7560b3f11f0342917735ac899400591908ba51702b140144adad4f16a4857d395c76cf70dc40d48ffd3af9b8b74cc1fcc030846f33d097912@[::]:50591?discport=0"
+INFO [06-08|13:32:09] started whisper v.6.0 
+INFO [06-08|13:32:09] Transaction pool price threshold updated price=18000000000
+INFO [06-08|13:32:09] Etherbase automatically configured       address=0x5e4d047Cd9173fD13c220A0bf756c7E25C00F587
+INFO [06-08|13:32:09] Starting mining operation 
+INFO [06-08|13:32:09] Commit new mining work                   number=1 txs=0 uncles=0 elapsed=65.764µs
+WARN [06-08|13:32:09] Block sealing failed                     err="waiting for transactions"
+== No transactions! Mining stopped.
+INFO [06-08|13:32:10] HTTP endpoint opened                     url=http://localhost:8545 cors=http://localhost:* vhosts=localhost
+INFO [06-08|13:33:33] Submitted transaction                    fullhash=0x85f54ea98f2b3e8761c738081bcd1d51a6eb10af40c0e258ec47ebc78d4c48b4 recipient=0x623734d4070648368C784D48Bb3BBCce6525B2D4
+== Pending transactions! Mining...
+INFO [06-08|13:33:34] Transaction pool price threshold updated price=1
+INFO [06-08|13:33:34] Starting mining operation 
+INFO [06-08|13:33:34] Commit new mining work                   number=1 txs=1 uncles=0 elapsed=445.448µs
+INFO [06-08|13:33:34] Successfully sealed new block            number=1 hash=83ad4a…f8ab5a
+INFO [06-08|13:33:34] 🔨 mined potential block                  number=1 hash=83ad4a…f8ab5a
+INFO [06-08|13:33:34] Commit new mining work                   number=2 txs=0 uncles=0 elapsed=774.383µs
+WARN [06-08|13:33:34] Block sealing failed                     err="waiting for transactions"
+== No transactions! Mining stopped.
+INFO [06-08|13:33:38] Submitted transaction                    fullhash=0xb5e26544b6405d5a8cf20220caec47947f7bd3d0afe81d937f9affa3c1df842d recipient=0x623734d4070648368C784D48Bb3BBCce6525B2D4
+== Pending transactions! Mining...
+INFO [06-08|13:33:38] Transaction pool price threshold updated price=1
+INFO [06-08|13:33:38] Starting mining operation 
+INFO [06-08|13:33:38] Commit new mining work                   number=2 txs=1 uncles=0 elapsed=245.807µs
+INFO [06-08|13:33:38] Successfully sealed new block            number=2 hash=12c836…02213e
+INFO [06-08|13:33:38] 🔨 mined potential block                  number=2 hash=12c836…02213e
+INFO [06-08|13:33:38] Commit new mining work                   number=3 txs=0 uncles=0 elapsed=275.36µs
+WARN [06-08|13:33:38] Block sealing failed                     err="waiting for transactions"
+== No transactions! Mining stopped.
+INFO [06-08|13:33:41] Submitted transaction                    fullhash=0x832215539f4d2ba775c238c5b2c5b92471fb2cc211287beeb70829a0c5ebf90e recipient=0x623734d4070648368C784D48Bb3BBCce6525B2D4
+== Pending transactions! Mining...
+INFO [06-08|13:33:42] Transaction pool price threshold updated price=1
+INFO [06-08|13:33:42] Starting mining operation 
+INFO [06-08|13:33:42] Commit new mining work                   number=3 txs=1 uncles=0 elapsed=426.405µs
+INFO [06-08|13:33:42] Successfully sealed new block            number=3 hash=98f51c…f974cb
+INFO [06-08|13:33:42] 🔨 mined potential block                  number=3 hash=98f51c…f974cb
+INFO [06-08|13:33:42] Commit new mining work                   number=4 txs=0 uncles=0 elapsed=662.612µs
+WARN [06-08|13:33:42] Block sealing failed                     err="waiting for transactions"
+== No transactions! Mining stopped.
+INFO [06-08|14:32:09] Regenerated local transaction journal    transactions=0 accounts=0
