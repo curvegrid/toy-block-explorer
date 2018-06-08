@@ -74,13 +74,11 @@ func GetTransactionsForBlock(blockchainInfo *BlockchainInfo) {
 	// retrieve the block, which includes all of the transactions
 
 	// for _, transaction := range []*types.Transaction(block.Transactions()) {
-		// retrieve transaction receipt
+	// retrieve transaction receipt
 
+	transactionInfo := TransactionInfo{}
 
-		transactionInfo := TransactionInfo{
-		}
-
-		blockchainInfo.Transactions = append(blockchainInfo.Transactions, transactionInfo)
+	blockchainInfo.Transactions = append(blockchainInfo.Transactions, transactionInfo)
 	//}
 }
 
