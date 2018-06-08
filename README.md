@@ -64,6 +64,12 @@ $ ./launch43.sh --ipcdisable --startrpc
 
 A local version of Geth is now running with a JSON RPC endpoint exposed at http://localhost:8545
 
+You may need to manually send some transactions. For example:
+
+```
+eth.sendTransaction({from: eth.accounts[0], to: eth.accounts[1], value: web3.toWei(300, "ether")})
+```
+
 Once you're finished with Geth, be sure to stop it:
 
 ```sh
