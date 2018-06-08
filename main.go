@@ -1,11 +1,11 @@
 package main
 
 import (
-	"encoding/hex"
-	"github.com/ethereum/go-ethereum/core/types"
 	"context"
+	"encoding/hex"
 	"flag"
 	"fmt"
+	"github.com/ethereum/go-ethereum/core/types"
 	"github.com/ethereum/go-ethereum/ethclient"
 	"github.com/ethereum/go-ethereum/rpc"
 	"html/template"
