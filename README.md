@@ -1,6 +1,8 @@
 # toy-block-explorer
 A blockchain explorer written in Go to learn about building server-side applications that work with the Ethereum blockchain.
 
+![Toy Block Explorer](screenshot.png)
+
 ## Pre-requisites
 
 You will need to install the following to build and work with this project:
